@@ -5,32 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" />
     <title>Child page</title>
 
     <style>
         #domain {
             font-weight: bold;
         }
+        
+        #receivedMessageContent {
+            padding: 1em;
+        }
     </style>
 </head>
 
 <body>
-    This page is running on <span id='domain'></span>.
-    <br>
-    <button>Post World!</button>
-    <br>
-    <div id='receivedMessage'></div>
+    <p>This page is in iframe running on <span id='domain'></span>.</p>
+    <p><button class='btn btn-warning' id='postButton'>Post "World!" to the parent window.</button></p>
+    <div id='receivedMessageContent'></div>
 
     <script>
+        document.querySelector('#domain').innerHTML = document.domain;
+        var receivedMessage = document.querySelector('#receivedMessageContent');
+        var parentEvent;
         window.addEventListener('message', function(event) {
-            $('#receivedMessage').append('<p>received: ' + JSON.stringify(event.data));
-            $('button').on('click', () => {
-                event.source.postMessage('WORLD!', event.origin);
-            });
+            receivedMessage.innerHTML += '<p>' + event.data + '</p>';
+            parentEvent = event;
         }, false);
 
-        document.querySelector('#domain').innerHTML = document.domain;
+        var postButton = document.querySelector('#postButton');
+        postButton.addEventListener('click', function() {
+            console.log('send world');
+            parentEvent.source.postMessage('WORLD!', parentEvent.origin);
+        });
     </script>
 </body>
 
