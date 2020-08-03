@@ -38,7 +38,7 @@
         var postButton = document.querySelector('#postButton');
         postButton.addEventListener('click', function() {
             console.log('send world');
-            console.log('parentEvent.origin: ' + JSON.stringify(parentEvent.origin));
+            console.log('parentEvent: ' + JSON.stringify(parentEvent));
             parentEvent.source.postMessage('WORLD!', parentEvent.origin);
         });
     </script>
