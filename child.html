@@ -28,6 +28,7 @@
         document.querySelector('#domain').innerHTML = document.domain;
         var receivedMessage = document.querySelector('#receivedMessageContent');
         var parentEvent;
+        console.log("parentEvent: " + parentEvent);
         window.addEventListener('message', function(event) {
             receivedMessage.innerHTML += '<p>' + event.data + '</p>';
             parentEvent = event;
