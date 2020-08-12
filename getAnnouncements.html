@@ -31,7 +31,7 @@ $(document).ready(function () {
     // web_url/_layouts/15/resource
     var scriptbase = hostweburl + "/_layouts/15/";
    
-
+    debugger;
     // Load the js files and continue to the successHandler
     $.getScript(scriptbase + "SP.RequestExecutor.js", getHostWebListsUsingREST);
 });
@@ -84,7 +84,6 @@ function execCrossDomainRequest() {
 // Function to handle the success event.
 // Prints the data to the page.
 function successHandler(data) {
-debugger;
     var jsonObject = JSON.parse(data.body);
     var announcementsHTML = "";
     var results = jsonObject.d.results;
