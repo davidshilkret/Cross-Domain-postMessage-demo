@@ -84,10 +84,9 @@ function execCrossDomainRequest() {
 // Function to handle the success event.
 // Prints the data to the page.
 function successHandler(data) {
-
+debugger;
     var jsonObject = JSON.parse(data.body);
     var announcementsHTML = "";
-
     var results = jsonObject.d.results;
     for (var i = 0; i < results.length; i++) {
         announcementsHTML = announcementsHTML +
