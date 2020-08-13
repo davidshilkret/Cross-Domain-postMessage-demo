@@ -49,7 +49,7 @@ function getHostWebListsUsingREST() {
                 addinweburl +
                 "/_api/SP.AppContextSite(@target)/web/lists/?@target='" + hostweburl + "'",
             method: "GET",
-            headers: { "Accept": "application/json; odata=verbose", "Content-type":"application/json; odata=verbose" },
+            headers: { "Accept": "application/json; odata=verbose", "crossDomain":true, "Content-type":"application/json; odata=verbose" },
             
             success: successHandler,
             error: errorHandler
