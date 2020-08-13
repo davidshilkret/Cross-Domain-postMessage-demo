@@ -35,9 +35,28 @@
             var scriptbase = hostweburl + "/_layouts/15/";
 
             // Load the js files and continue to the successHandler
-            $.getScript(scriptbase + "SP.RequestExecutor.js", execCrossDomainRequest);
+            //$.getScript(scriptbase + "SP.RequestExecutor.js", execCrossDomainRequest);
+            $.getScript(scriptbase + "SP.Runtime.js",
+                function () {
+                $.getScript(scriptbase + "SP.js",
+                function () { 
+                  $.getScript(scriptbase + "SP.RequestExecutor.js", createControl); 
+              }
+        );
+    }
+);
           });
+          function createControl() {
+          //Initialize Controls Runtime
+          Office.Controls.Runtime.initialize({
+              sharePointHostUrl: Office.Samples.PeoplePickerBasic.hostWebUrl,
+              appWebUrl: Office.Samples.PeoplePickerBasic.appWebUrl
+        });
 
+        //Render the widget, this must be executed after the
+        //placeholder DOM is loaded
+        Office.Controls.Runtime.renderAll();
+    }
           // Function to prepare and issue the request to get
           //  SharePoint data
           function execCrossDomainRequest() {
