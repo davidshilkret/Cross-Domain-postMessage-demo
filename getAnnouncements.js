@@ -7,7 +7,7 @@ button.on("click", () => {
   banner.toggleClass("alt")
 })
 var hostweburl = "https://docintsp2016.discovertechnologies.com";
-var addinweburl = "https://apps-cd3026e4f248fd.dtechwebapps.com/SharePoint-Add-in-REST-OData-CrossDomain";
+var addinweburl = "https://apps-cd3026e4f24904.dtechwebapps.com/SharePoint-Add-in-REST-OData-CrossDomain";
 
 // Load the required SharePoint libraries
 $(document).ready(function () {
