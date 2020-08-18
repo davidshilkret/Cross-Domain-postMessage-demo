@@ -16,7 +16,7 @@ button.on("click", () => {
   banner.toggleClass("alt")
 })
 var hostweburl = "https://docintsp2016.discovertechnologies.com";
-var addinweburl = "https://apps-cd3026e4f24907.dtechwebapps.com/SharePoint-Add-in-REST-OData-CrossDomain";
+var addinweburl = "https://apps-cd3026e4f24908.dtechwebapps.com/SharePoint-Add-in-REST-OData-CrossDomain-VerCel";
 
 // Load the required SharePoint libraries
 $(document).ready(function () {
@@ -38,6 +38,8 @@ $(document).ready(function () {
     debugger;
     // Load the js files and continue to the successHandler
     $.getScript(scriptbase + "SP.RequestExecutor.js", getHostWebListsUsingREST);
+    //Translation: $.getScript"(https://docintsp2016.discovertechnologies.com/_layouts/15/SP.RequestExecutor.js",Calls getHostWebListUsingREST Method within this script which calls SuccessHandler)
+    //The next test is to call execCrossDomainRequest() to verify the use of REST calls that closely mirror the list query API in SP. 
 });
 
 function getHostWebListsUsingREST() {
@@ -56,7 +58,7 @@ function getHostWebListsUsingREST() {
             success: successHandler,
             error: errorHandler
         }
-    );
+    );  
 }
 
 // Function to prepare and issue the request to get
