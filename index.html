@@ -79,7 +79,7 @@
             }
           },
           error: function (data, errorThrown, status) {
-            $("#div2").html("<span>" + JSON.stringify(errorThrown) + "</span>");
+            $("#div2").html("<span>" + JSON.stringify(data) + "</span>");
           },
         });
         //call the REST API with the at variable in header
