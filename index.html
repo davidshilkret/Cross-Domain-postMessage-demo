@@ -59,15 +59,15 @@
             //alert(JSON.stringify(data));
             console.log("Data: " + JSON.stringify(data.results[0]));
             
-            for (var d in data.results) {
-                console.log("title: " + JSON.stringify(data.results[d].title));
+            for (var d in data.d.results) {
+                console.log("title: " + JSON.stringify(data.d.results[d].title));
               $("#div2").html(
                 "<span>" +
                   JSON.stringify(data.results[d].title) +
                   "</span>"
               );
               var urlBase = "https://dtecho365.sharepoint.com/";
-              var relURL = data.results[d].ServerRelativeUrl;
+              var relURL = data.d.results[d].ServerRelativeUrl;
               var htmlOut =
                 "<br><span>" +
                 "<a target=_blank href=" +
