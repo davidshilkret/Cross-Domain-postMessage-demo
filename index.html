@@ -86,7 +86,7 @@
         //call the REST API with the at variable in header
       },
       error: function (data, errorThrown, status) {
-        alert(data + status);
+        alert(JSON.stringify(data) + JSON.stringify(status));
         $("#div1").html("<span>" + errorThrown + "</span>");
       },
     });
