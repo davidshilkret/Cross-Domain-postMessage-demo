@@ -58,7 +58,9 @@
           success: function (data) {
             //alert(JSON.stringify(data));
             console.log("Data: " + JSON.stringify(data));
+            
             for (var d in data.results) {
+                console.log("title: " + JSON.stringify(data.results[d].title));
               $("#div2").html(
                 "<span>" +
                   JSON.stringify(data.results[d].title) +
