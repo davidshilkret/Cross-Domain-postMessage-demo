@@ -56,7 +56,7 @@
             "Authorization": "bearer " + btok
           },
           success: function (data) {
-            alert(data);
+            alert(JSON.stringify(data));
             for (var d in data.value) {
               $("#div2").html(
                 "<span>" +
@@ -86,7 +86,7 @@
         //call the REST API with the at variable in header
       },
       error: function (data, errorThrown, status) {
-        alert( JSON.stringify(status) +  JSON.stringify(errorThrown) + JSON.stringify(data));
+        //alert( JSON.stringify(status) +  JSON.stringify(errorThrown) + JSON.stringify(data));
         $("#div1").html("<span>" + status + errorThrown + data + "</span>");
       },
     });
