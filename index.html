@@ -47,8 +47,8 @@
         $.ajax({
           type: "GET",
           crossDomain: true,
-           url:"https://dtecho365.sharepoint.com/sites/ServiceNowDev1/_api/web/getfolderbyserverrelativeurl('/Shared%20Documents')/files",
-          //url:"https://dtecho365.sharepoint.com/sites/ServiceNowDev1/_api/web/lists", 
+          // url:"https://dtecho365.sharepoint.com/sites/ServiceNowDev1/_api/web/getfolderbyserverrelativeurl('/Shared%20Documents')/files",
+          url:"https://dtecho365.sharepoint.com/sites/ServiceNowDev1/_api/web/lists", 
     
           headers: {
             "Accept": "application/json;odata=verbose",
@@ -56,7 +56,8 @@
             "Authorization": "bearer " + btok
           },
           success: function (data) {
-            alert(JSON.stringify(data));
+            //alert(JSON.stringify(data));
+            console.log("Data: " + data);
             for (var d in data.value) {
               $("#div2").html(
                 "<span>" +
