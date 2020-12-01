@@ -67,19 +67,15 @@
                   "</span>"
               );
               var urlBase = "https://dtecho365.sharepoint.com/";
-              var relURL = data.d.results[d].ServerRelativeUrl;
+              var title = data.d.results[d].Title;
               var htmlOut =
                 "<br><span>" +
-                "<a target=_blank href=" +
-                urlBase +
-                relURL +
-                "?web=1" +
-                ">" +
-                "File Link</a></span>";
+              title + "</span>";
               var htmlData =
                 "<br><span>" + JSON.stringify(data) + "File Link</a></span>";
+                $("#div3").append(htmlOut);
               $("#div3").append(htmlOut);
-              $("#div3").append(htmlData);
+              //$("#div3").append(htmlData);
             }
           },
           error: function (data, errorThrown, status) {
