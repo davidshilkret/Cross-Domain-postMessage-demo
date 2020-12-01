@@ -79,14 +79,14 @@
             }
           },
           error: function (data, errorThrown, status) {
-            $("#div2").html("<span>" + JSON.stringify(data) + "</span>");
+            $("#div2").html("<span>" + JSON.stringify(status) +  JSON.stringify(errorThrown) + JSON.stringify(data) +"</span>");
           },
         });
         //call the REST API with the at variable in header
       },
       error: function (data, errorThrown, status) {
         //alert( JSON.stringify(status) +  JSON.stringify(errorThrown) + JSON.stringify(data));
-        $("#div1").html("<span>" + status + errorThrown + data + "</span>");
+        $("#div1").html("<span>" + JSON.stringify(status) + JSON.stringify(errorThrown) + JSON.stringify(data) + "</span>");
       },
     });
     
