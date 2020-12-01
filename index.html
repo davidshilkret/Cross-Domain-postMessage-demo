@@ -69,11 +69,11 @@
               var urlBase = "https://dtecho365.sharepoint.com/";
               var title = data.d.results[d].Title;
               var htmlOut =
-                "<h3>List of lists from ServiceNowDev1</h3><br><span>" +
+                "<br><span>" +
               title + "</span>";
               var htmlData =
                 "<br><span>" + JSON.stringify(data) + "File Link</a></span>";
-                $("#div3").append(htmlOut);
+                $("#div3").append("<h3>List of lists from ServiceNowDev1</h3>" + htmlOut);
               //$("#div3").append(htmlOut);
               //$("#div3").append(htmlData);
             }
