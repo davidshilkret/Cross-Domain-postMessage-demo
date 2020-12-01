@@ -58,14 +58,14 @@
           success: function (data) {
             //alert(JSON.stringify(data));
             console.log("Data: " + JSON.stringify(data));
-            for (var d in data.value) {
+            for (var d in data.results) {
               $("#div2").html(
                 "<span>" +
-                  JSON.stringify(data.value[d].ServerRelativeUrl) +
+                  JSON.stringify(data.results[d].ServerRelativeUrl) +
                   "</span>"
               );
               var urlBase = "https://dtecho365.sharepoint.com/";
-              var relURL = data.value[d].ServerRelativeUrl;
+              var relURL = data.results[d].ServerRelativeUrl;
               var htmlOut =
                 "<br><span>" +
                 "<a target=_blank href=" +
