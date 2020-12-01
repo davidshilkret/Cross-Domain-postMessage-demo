@@ -1,0 +1,96 @@
+<div>
+    <!-- your widget template -->
+    <span>Div1</span>
+    <div id='div1'>
+    Test1
+    </div><br>
+    <span>Div2</span>
+    <div id='div2' class="no-class">
+    <b>Reg Page:</b>https://splmdnw57xg3ppq.eastus2.cloudapp.azure.com/sites/ServiceNow/_layouts/15/appregnew.aspx<br/>
+    <b>Appid (clientid): </b>0815b6f7bbc64d28a2a0ffbb50eebd3b<br/>
+    <b>Client Secret: </b>SfOpD+o/ppgQg97+RG54d89QahHc3OE3cNpcx89EqPE=<br/>
+    <b>Title: </b>dtdocintonprem <br/>
+    <b>App Domain: </b>splmdnw57xg3ppq.eastus2.cloudapp.azure.com<br/>
+    <b>Redirect: </b>https://splmdnw57xg3ppq.eastus2.cloudapp.azure.com
+    </div>
+    <div id='div3'>
+    Test3
+    </div>
+    <!--script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script-->
+    
+    
+      <script>
+        getList();
+    function getList() {
+      $.ajax({
+      type: "POST",
+      crossDomain: true,
+      url:
+        "https://accounts.accesscontrol.windows.net/cc03691b-456c-4116-8ddd-157c08cfe3d2/tokens/OAuth/2",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        "accept": "application/json;odata=verbose"
+      },
+      data: {
+        "grant_type": "client_credentials",
+        "client_id": "5092f3c3-caa7-4c44-8fd6-8f2bf81113d3@cc03691b-456c-4116-8ddd-157c08cfe3d2",
+        "client_secret": "520dnknTIWGDIgdOG0EGQaoT3XuVo+BqGJl6nOs+9ss=",
+        "resource":
+          "00000003-0000-0ff1-ce00-000000000000/dtecho365.sharepoint.com@cc03691b-456c-4116-8ddd-157c08cfe3d2",
+      },
+      success: function (data) {
+        //data.token_type returns "Bearer"
+        //data.access_token returns < AccessToken >
+        var btok = data.access_token;
+         $("#div1").html("<span>"+btok+"</span>");
+        //debugger;
+        $.ajax({
+          type: "GET",
+          crossDomain: true,
+          // url:"https://dtecho365.sharepoint.com/sites/ServiceNowDev1/_api/web/getfolderbyserverrelativeurl('/Shared%20Documents')/files",
+          url:"https://dtecho365.sharepoint.com/sites/ServiceNowDev1/_api/web/lists", 
+    
+          headers: {
+            "Accept": "application/json;odata=verbose",
+            "Content-Type": "application/json;odata=verbose",
+            "Authorization": "bearer " + btok
+          },
+          success: function (data) {
+            alert(data);
+            for (var d in data.value) {
+              $("#div2").html(
+                "<span>" +
+                  JSON.stringify(data.value[d].ServerRelativeUrl) +
+                  "</span>"
+              );
+              var urlBase = "https://dtecho365.sharepoint.com/";
+              var relURL = data.value[d].ServerRelativeUrl;
+              var htmlOut =
+                "<br><span>" +
+                "<a target=_blank href=" +
+                urlBase +
+                relURL +
+                "?web=1" +
+                ">" +
+                "File Link</a></span>";
+              var htmlData =
+                "<br><span>" + JSON.stringify(data) + "File Link</a></span>";
+              $("#div3").append(htmlOut);
+              $("#div3").append(htmlData);
+            }
+          },
+          error: function (data, errorThrown, status) {
+            $("#div2").html("<span>" + errorThrown + "</span>");
+          },
+        });
+        //call the REST API with the at variable in header
+      },
+      error: function (data, errorThrown, status) {
+        alert(data + status);
+        $("#div1").html("<span>" + errorThrown + "</span>");
+      },
+    });
+    
+    }
+      </script>
+    </div>
